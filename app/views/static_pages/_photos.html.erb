@@ -1,0 +1,27 @@
+<% if photos %>
+	<div id='photo-container'>
+		<% photos.each do |photo| %>
+			<a href=<%= Flickr.url_photopage(photo) %>>
+				<%= image_tag Flickr.url(photo), loading: 'lazy' %>
+			</a>
+		<% end %>
+	</div>
+	<% if photos.pages > 1 %>
+		<br>
+		<div id='page_container'>
+			<% back = photos.page - 1 %>
+			<% forward = photos.page + 1 %>
+			<% min = (photos.page - 9 > 0) ? photos.page - 9 : 1 %>
+			<% max = (photos.page + 9 <= photos.pages) ? photos.page + 9 : photos.pages %>
+			<%= link_to '<', root_path if back > 0 %>
+			<% min.upto(max) do |i| %>
+				<% if photos.page == i %>
+					<span id='current-page'><%= i %></span>
+				<% else %>
+					<%= link_to i, root_path %>
+				<% end %>
+			<% end %>
+			<%= link_to '>', search_path(params: params.merge(page: forward)) if forward <= photos.pages %>
+		</div>
+	<% end %>
+<% end %>

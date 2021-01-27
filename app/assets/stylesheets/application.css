@@ -13,3 +13,198 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+}
+
+/* links */
+
+a {
+  text-decoration: none;
+  color: #385898;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+ /* header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  background-color: #006ac0;
+  box-sizing: border-box;
+  align-items: center;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  font-family: 'Inconsolata', monospace;
+}
+
+header a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #9a9498;
+  text-decoration: none;
+}
+
+/* container for all pages excluding header */
+
+.page-body {
+  padding: 0 10vw 1vw 10vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  background-color: #f3f3f3;
+}
+
+/* flash */
+
+.flash-container {
+  background-color: #7c7aff4f;
+}
+
+#notice {
+  font-size: 13px;
+  padding: 1vh 1vh 1vh 10vw;
+  color: rgb(22, 129, 76);
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+#notice a {
+  color: rgb(22, 129, 76);
+}
+
+/* search form */
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 3vh 0 3vh 0;
+}
+
+.search-input {
+  width: 25vw;
+  padding-left: 5px;
+  box-sizing: border-box;
+  height: 3.5vh;
+  border: 1px solid gray;
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: #ccddff7c;
+}
+
+#aperture-icon {
+  font-size: 2.2vw;
+  align-self: center;
+  color: #1f72bb;
+  transition: 1200ms;
+}
+
+#aperture-icon:hover {
+  transform: rotate(360deg);
+  transition: 1200ms;
+}
+
+#aperture-icon:active {
+  color: white;
+  transition: 300ms;
+}
+
+#search-button {
+  width: 12vw;
+  box-sizing: border-box;
+  border: 1px solid #385898;
+  cursor: pointer;
+  height: 3.5vh;
+  background-color: white;
+  color: #385898;
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+}
+
+#search-button:hover {
+  color: white;
+  background-color: #385898;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+#search-button:focus {
+  outline: none;
+  box-shadow: 0 0 7px 1px #385898;
+  border: none;
+  transition: none;
+}
+
+/* photo display */
+/* https://css-tricks.com/seamless-responsive-photo-grid/ */
+
+#photos-container {
+  /* Prevent vertical gaps */
+  line-height: 0;
+  column-count:         3;
+  column-gap:           4px;
+}
+
+@media (max-width: 900px) {
+  #photos-container {
+  column-count:         2;
+  }
+}
+
+#photos-container img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 4px;
+}
+
+#photos-container img:hover {
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+/* pagination links */
+
+#pages-container {
+  display: flex;
+  justify-content: center;
+}
+
+#pages-container a {
+  color: #1f72bb;
+  text-decoration: none;
+  margin: 5px;
+}
+
+#pages-container a:hover {
+  text-decoration: underline;
+}
+
+#current-page {
+  color: rgb(32, 2, 2);
+  margin: 5px;
+}

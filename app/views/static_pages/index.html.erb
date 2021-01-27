@@ -1,14 +1,16 @@
-
-<div class="container mt-5 d-flex justify-content-center">
-  <div class="bg-white shadow p-5 text-monospace">
-    <%= form_with(url: "/", local: true, method: "get") do |f| %>
-      <p>Enter a flickr ID to see photos</p>
-      <div class="input-group mb-3">
-        <%= f.text_field :user_id, class: "form-control", placeholder: "User Id", required: true %>
-        <div class="input-group-append">
-          <%= f.submit "Search", :class => "btn btn-outline-primary col-lg-12" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<div class='search-container'>
+  <%= form_with(url: root_path, method: :get, local: true) do |form| %>
+    <%= form.text_field :user_id, class: 'search-input', placeholder: 'Search by Flickr User ID' %>
+    <%= form.submit :Search, id: 'search-button' %>
+  <% end %>
+  <ion-icon name="aperture-sharp" id='aperture-icon'></ion-icon>
+  <%= form_with(url: root_path, method: :get, local: true) do |form| %>
+    <%= form.text_field :tags, class: 'search-input', placeholder: 'Search by Tags' %>
+    <%= form.submit :Search, id: 'search-button' %>
+  <% end %>
 </div>
+
+<%= render 'photos', photos: @photos, params: @params %>
+
+<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
